@@ -1,0 +1,35 @@
+{
+    "listar_usuarios"           : "SELECT * FROM hotel_mpc.tbl_usuario",
+    "listar_comunas"            : "SELECT * FROM hotel_mpc.tbl_comunas",
+    "listar_estados_habitacion" : "SELECT * FROM hotel_mpc.tbl_estado_habitacion",
+    "listar_estado_reserva"     : "SELECT * FROM hotel_mpc.tbl_estado_resverva",
+    "listar_habitaciones"       : "SELECT * FROM hotel_mpc.tbl_habitacion",
+    "listar_orientacion"        : "SELECT * FROM hotel_mpc.tbl_orientacion",
+    "listar_pasajeros"          : "SELECT * FROM hotel_mpc.tbl_pasajero",
+    "listar_provincias"         : "SELECT * FROM hotel_mpc.tbl_provincias",
+    "listar_regiones"           : "SELECT * FROM hotel_mpc.tbl_region",
+    "listar_reserva_pasajeros"  : "SELECT * FROM hotel_mpc.tbl_reserva_pasajero",
+    "listar_tipo_cama"          : "SELECT * FROM hotel_mpc.tbl_tipo_cama",
+    "listar_usuarios_admin"     : "SELECT * FROM hotel_mpc.tbl_usuario_admin",
+    "buscar_usuario"            : "SELECT * FROM hotel_mpc.tbl_usuario WHERE ID_USUARIO = %s",
+    "eliminar_usuario"          : "DELETE FROM hotel_mpc.tbl_usuario WHERE ID_USUARIO = %s",
+    "actualiza_usuario"         : "UPDATE hotel_mpc.tbl_usuario SET NOMBRE = %s, APELLIDO = %s, EMAIL = %s, CONTRASENA = %s, ES_ADMINISTRADOR = %s WHERE ID_USUARIO = %s",
+    "buscar_reserva"            : "SELECT * FROM hotel_mpc.tbl_reserva WHERE ID_RESERVA = %(id)s",
+    "crear_reserva"             : "INSERT INTO hotel_mpc.tbl_reserva (FEC_RESERVA, FEC_LLEGADA, FEC_SALIDA, CANT_PASAJEROS, MONTO_TOTAL, ID_ESTADO_RESERVA, PENALIZACION, ID_HABITACION) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+    "actualizar_reserva"        : "UPDATE hotel_mpc.tbl_reserva SET FEC_RESERVA = %s, FEC_LLEGADA = %s, FEC_SALIDA = %s, CANT_PASAJEROS = %s, MONTO_TOTAL = %s, ID_ESTADO_RESERVA = %s, PENALIZACION = %s, ID_HABITACION = %s WHERE ID_RESERVA = %s",
+    "eliminar_reserva"          : "DELETE FROM hotel_mpc.tbl_reserva WHERE ID_RESERVA = %s",
+    "listar_reservas"           :"SELECT * FROM hotel_mpc.tbl_reserva",
+    "buscar_habitacion"         : "SELECT * FROM hotel_mpc.tbl_habitacion WHERE ID_HABITACION = %(id)s",
+    "crear_habitacion"          : "INSERT INTO hotel_mpc.tbl_habitacion (NUMERO_HABITACION, CAPACIDAD, ID_TIPO_CAMA, ID_ORIENTACION, ID_ESTADO_HAB) VALUES (%(numero)s, %(capacidad)s, %(tipo_cama)s, %(orientacion)s, %(estado)s)",
+    "actualizar_habitacion"     : "UPDATE hotel_mpc.tbl_habitacion SET NUMERO_HABITACION = %(numero)s, CAPACIDAD = %(capacidad)s, ID_TIPO_CAMA = %(tipo_cama)s, ID_ORIENTACION = %(orientacion)s, ID_ESTADO_HAB = %(estado)s WHERE ID_HABITACION = %(id)s",
+    "eliminar_habitacion"       : "DELETE FROM hotel_mpc.tbl_habitacion WHERE ID_HABITACION = %(id)s",
+    "buscar_pasajero"           : "SELECT * FROM hotel_mpc.tbl_pasajero WHERE ID_PASAJERO = %(id)s",
+    "crear_pasajero"            : "INSERT INTO hotel_mpc.tbl_pasajero (NOMBRE_PASAJERO, APELLIDO_PASAJERO, FEC_NAC_PASAJERO, USER_EMAIL_PASAJERO, DIRE_PASAJERO, ID_REGION, ID_PROVINCIA, ID_COMUNA) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+    "actualizar_pasajero"       : "UPDATE hotel_mpc.tbl_pasajero SET NOMBRE_PASAJERO = %s, APELLIDO_PASAJERO = %s, FEC_NAC_PASAJERO = %s, USER_EMAIL_PASAJERO = %s, DIRE_PASAJERO = %s, ID_REGION = %s, ID_PROVINCIA = %s, ID_COMUNA = %s WHERE ID_PASAJERO = %s",
+    "crear_usuario"             : "INSERT INTO hotel_mpc.tbl_usuario (USER_NOMBRE, USER_APELLIDO, USER_EMAIL, CONTRASENA, ES_ADMINISTRADOR) VALUES (%s, %s, %s, %s, %s)",
+    "actualizar_usuario"        : "UPDATE hotel_mpc.tbl_usuario SET USER_NOMBRE = %s, USER_APELLIDO = %s, USER_EMAIL = %s, CONTRASENA = %s, ES_ADMINISTRADOR = %s WHERE ID_USUARIO = %s",
+    "eliminar_pasajero"         : "DELETE FROM hotel_mpc.tbl_pasajero WHERE ID_PASAJERO = %s"
+    
+    
+}   
+    
