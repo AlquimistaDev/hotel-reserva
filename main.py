@@ -335,6 +335,7 @@ def gestionar_reservas():
                     fec_salida = input(f"Nueva fecha de salida ({reserva_actual.fec_salida}): ") or str(reserva_actual.fec_salida)
                     cant_pasajeros = input(f"Nueva cantidad de pasajeros ({reserva_actual.cant_pasajeros}): ") or reserva_actual.cant_pasajeros
                     monto_total = input(f"Nuevo monto total ({reserva_actual.monto_total}): ") or reserva_actual.monto_total
+                    
                     id_estado_reserva = input(f"Nuevo ID de estado de reserva ({reserva_actual.id_estado_reserva}): ") or reserva_actual.id_estado_reserva
                     penalizacion = input(f"Nueva penalización ({reserva_actual.penalizacion}): ") or reserva_actual.penalizacion
                     id_habitacion = input(f"Nuevo ID de habitación ({reserva_actual.id_habitacion}): ") or reserva_actual.id_habitacion
@@ -421,29 +422,10 @@ def gestionar_habitaciones():
             except ValueError:
                 print("El ID ingresado no es válido. Debe ser un número entero.")
         elif opcion == '3':
-            print("\nCrear nueva habitación:")
-            try:
-                numero_habitacion = int(input("Número de habitación: "))
-                capacidad = int(input("Capacidad: "))
-                id_tipo_cama = int(input("ID del tipo de cama: "))
-                id_orientacion = int(input("ID de orientación: "))
-                id_estado_hab = int(input("ID del estado de habitación: "))
-                
-                nueva_habitacion = HabitacionDTO(
-                    id_habitacion=None,
-                    numero_habitacion=numero_habitacion,
-                    capacidad=capacidad,
-                    id_tipo_cama=id_tipo_cama,
-                    id_orientacion=id_orientacion,
-                    id_estado_hab=id_estado_hab
-                )
-                
-                if habitacion_dao.crear_habitacion(nueva_habitacion):
-                    print("Habitación creada exitosamente.")
-                else:
-                    print("Error al crear la habitación.")
-            except ValueError:
-                print("Error: Ingrese valores numéricos válidos.")
+            if habitacion_dao.crear_habitacion():
+                pass
+            else:
+                print("Error al crear la habitación.")
         elif opcion == '4':
             id_habitacion = input("Ingrese el ID de la habitación a actualizar: ")
             try:
