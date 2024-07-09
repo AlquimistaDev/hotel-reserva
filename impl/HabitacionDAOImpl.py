@@ -121,6 +121,18 @@ class HabitacionDAOImpl(HabitacionDAO):
         connection = self.db.get_connection()
         try:
             with connection.cursor() as cursor:
+                # Validar que el número de habitación y la capacidad sean enteros positivos
+                if habitacion.numero_habitacion <= 0 or habitacion.capacidad <= 0:
+                    raise ValueError("El número de habitación y la capacidad deben ser enteros positivos.")
+
+                # Validar que los valores de las claves foráneas sean válidos
+                if habitacion.id_tipo_cama not in [1, 2, 3, 4]:
+                    raise ValueError(f"El ID de tipo de cama {habitacion.id_tipo_cama} no es válido.")
+                if habitacion.id_orientacion not in [1, 2, 3, 4]:
+                    raise ValueError(f"El ID de orientación {habitacion.id_orientacion} no es válido.")
+                if habitacion.id_estado_hab not in [1, 2, 3, 4]:
+                    raise ValueError(f"El ID de estado de habitación {habitacion.id_estado_hab} no es válido.")
+
                 cursor.execute(self.queries['crear_habitacion'], {
                     'numero': habitacion.numero_habitacion,
                     'capacidad': habitacion.capacidad,

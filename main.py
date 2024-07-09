@@ -169,7 +169,7 @@ def gestionar_usuarios():
             if usuarios:
                 print("\nLista de Usuarios:")
                 for usuario in usuarios:
-                    print(f"usuario: {usuario.USER_NOMBRE} {usuario.USER_APELLIDO}, Email: {usuario.USER_EMAIL}")
+                    print(f"ID: {usuario.ID_USUARIO}, usuario: {usuario.USER_NOMBRE} - {usuario.USER_APELLIDO}, Email: {usuario.USER_EMAIL}")
             else:
                 print("No se encontraron usuarios.")
         elif opcion == '2':
