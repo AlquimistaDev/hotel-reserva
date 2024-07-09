@@ -8,6 +8,48 @@ from datetime import datetime
 from dto.PasajeroDTO import PasajeroDTO
 from impl.PasajeroDAOImpl import PasajeroDAOImpl
 
+
+def mostrar_terminos_y_condiciones():
+    print("--- Términos y Condiciones de Uso ---")
+    print("1. Aceptación de los Términos")
+    print("Al acceder y utilizar el sistema de reservas de hotel, usted acepta cumplir y estar sujeto a los siguientes términos y condiciones, así como a cualquier política o lineamiento adicional publicado por el proveedor del sistema.")
+    print()
+    print("2. Uso del Sistema")
+    print("* El sistema de reservas de hotel está diseñado para uso personal y no comercial. Queda prohibido el uso del sistema con fines ilegales o dañinos.")
+    print("* Los usuarios deben proporcionar información precisa y actualizada al momento de crear una cuenta o realizar reservaciones. Proporcionar información falsa o engañosa puede resultar en la suspensión o cancelación de la cuenta.")
+    print("* Cada usuario es responsable de mantener la confidencialidad de su contraseña y cuenta de usuario. El proveedor no se hace responsable por el uso no autorizado de cuentas.")
+    print()
+    print("3. Reservas y Cancelaciones")
+    print("* Las reservas están sujetas a disponibilidad y pueden estar limitadas durante temporadas altas o eventos especiales.")
+    print("* El usuario es responsable de cancelar o modificar oportunamente sus reservas. Las políticas de cancelación y penalizaciones se detallan en el proceso de reserva.")
+    print("* El proveedor se reserva el derecho de cancelar o modificar una reserva en caso de fuerza mayor, mantenimiento o problemas operativos.")
+    print()
+    print("4. Privacidad y Seguridad de Datos")
+    print("* El proveedor se compromete a proteger la información personal de los usuarios de acuerdo con las leyes y regulaciones aplicables.")
+    print("* Los datos proporcionados por los usuarios serán utilizados únicamente para brindar el servicio de reservas y mejorar la experiencia del usuario.")
+    print("* El proveedor no compartirá ni venderá la información de los usuarios a terceros sin su consentimiento, excepto cuando sea requerido por ley.")
+    print()
+    print("5. Limitación de Responsabilidad")
+    print("* El proveedor no se hace responsable por cualquier daño, directo o indirecto, que pueda derivarse del uso del sistema de reservas de hotel.")
+    print("* El proveedor no garantiza la disponibilidad ininterrumpida o libre de errores del sistema. Los usuarios aceptan que pueden existir interrupciones, demoras o fallas en el servicio.")
+    print()
+    print("6. Modificaciones a los Términos")
+    print("* El proveedor se reserva el derecho de modificar estos Términos y Condiciones de Uso en cualquier momento.")
+    print("* Los cambios se publicarán en el sistema y se considerará que los usuarios han aceptado las modificaciones al continuar utilizando el servicio.")
+    print()
+    print("7. Contacto y Soporte")
+    print("* Para cualquier consulta, comentario o reporte de problemas, los usuarios pueden comunicarse con el equipo de soporte a través del siguiente correo electrónico: soporte@reservashotel.com")
+    print()
+    
+    while True:
+        aceptacion = input("Al utilizar el sistema de reservas de hotel, usted acepta cumplir con estos Términos y Condiciones de Uso. Si no está de acuerdo, le solicitamos que se abstenga de utilizar este servicio. ¿Acepta? (s/n): ").lower()
+        if aceptacion == 's':
+            return True
+        elif aceptacion == 'n':
+            return False
+        else:
+            print("Opción no válida. Ingrese 's' para aceptar o 'n' para rechazar.")
+
 def imprimir_separador():
     print("════════════════════════════════════════════════════════════")
 
@@ -481,21 +523,24 @@ def gestionar_habitaciones():
             print("Opción no válida. Por favor, intente de nuevo.")
 
 def main():
-    while True:
-        opcion = mostrar_menu_principal()
-        if opcion == '1':
-            gestionar_usuarios()
-        elif opcion == '2':
-            gestionar_reservas()
-        elif opcion == '3':
-            gestionar_habitaciones()
-        elif opcion == '4':
-            gestionar_pasajeros()
-        elif opcion == '5':
-            print("Gracias por usar el sistema. ¡Hasta luego!")
-            break
-        else:
-            print("Opción no válida. Por favor, intente de nuevo.")
+    if mostrar_terminos_y_condiciones():
+        while True:
+            opcion = mostrar_menu_principal()
+            if opcion == '1':
+                gestionar_usuarios()
+            elif opcion == '2':
+                gestionar_reservas()
+            elif opcion == '3':
+                gestionar_habitaciones()
+            elif opcion == '4':
+                gestionar_pasajeros()
+            elif opcion == '5':
+                print("Gracias por usar el sistema. ¡Hasta luego!")
+                break
+            else:
+                print("Opción no válida. Por favor, intente de nuevo.")
+    else:
+        print("No se puede acceder al sistema sin aceptar los Términos y Condiciones.")
 
 if __name__ == "__main__":
     main()
