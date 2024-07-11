@@ -76,6 +76,34 @@ self.connection = mysql.connector.connect(
 2. Ejecuta el archivo main.py para iniciar el sistema de reservas de hotel:
 - python main.py
 
+## Creacion de instalador
+- en un terminal cmd instalaremos la extencion (pyinstaller)
+1. una vez abierto el terminal cmd se escribira el comando (pip install pyinstaller)
+* en caso de  que el proceso de instalacion de pyinstaller arroje un error se debe actualizar la exxtencion (pip)
+## comando para actualizar
+- python.exe -m pip install --upgrade pip
+* en caso de haber actualizado el pip se debe terminar de implementar pyinstaller ejecutando nuevamente el comando.
+
+## configurar PATH
+1. abre la lupa de windows y buscamos ( editar las variables de entorno del sistema).
+2. se abrira una venta que dice Propiedades de sistema
+- en la pestaña opciones avanzadas, buscaremos (variables de entorno)
+- se abrira una pestala llamada (varables de entorno) y dentro buscaremos la lista (variables de sistema).
+- dentro de esta lista buscaremos la variable (Path).
+- selecionar el Path y presionamos el boton editar.
+- se abrira una pestaña llamada (editar variables de entorno).
+- dentro tenemos que seleccionar un boton (nuevo) y pegaremos la ruta donde tengamos instalado los script de python
+- presiona aceptar todo, y cerramos las ventanas que estan abiertas.
+
+
+## Creacion Main.exe
+1. abre visual estudio code
+2. abrimos terminal
+3. dentro del terminal nos dirigiremos a la ruta donde tengamos nuestro archivo main.py
+4. una vez dentro de la ruta ejecutaremos el comando (pyinstaller main.py)
+5. una vez realizado el comando en nuestra ruta nos creara 3 archivos (build, dist, main.spec)
+6. dentro de la carpeta dist se creara una carpeta main donde esta alojado nuestro ejecutable .exe
+
 
 ## Solución de problemas comunes
 

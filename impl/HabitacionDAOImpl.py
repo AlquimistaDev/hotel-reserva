@@ -30,7 +30,7 @@ class HabitacionDAOImpl(HabitacionDAO):
         }
 
     def load_queries(self):
-        with open('queries.json', 'r') as file:
+        with open('C:\\cursos\\reserva_hotel\\queries.json', 'r') as file:
             return json.load(file)
 
     def get_all_habitaciones(self) -> List[HabitacionDTO]:

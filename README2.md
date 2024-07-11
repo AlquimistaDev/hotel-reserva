@@ -169,7 +169,7 @@ El objetivo del sistema es automatizar y optimizar el proceso de reservas de hab
 - Contiene el código principal que maneja el flujo de ejecución del sistema de reservas de hotel.
 - Llama a los métodos de las implementaciones DAO para realizar las operaciones de gestión de usuarios, reservas, habitaciones y pasajeros.
 
-#### `queries.json`
+#### `C:\\cursos\\reserva_hotel\\queries.json`
 - Archivo que almacena las consultas SQL utilizadas en el proyecto.
 - Las implementaciones DAO hacen uso de estas consultas para interactuar con la base de datos.
 
@@ -193,7 +193,7 @@ El proyecto actual no incluye una capa de presentación explícita, ya que se tr
 
 ### Otros componentes
 - `DatabaseSingleton`: Clase encargada de la conexión a la base de datos MySQL.
-- `queries.json`: Archivo que almacena las consultas SQL utilizadas en el proyecto. 
+- `C:\\cursos\\reserva_hotel\\queries.json`: Archivo que almacena las consultas SQL utilizadas en el proyecto. 
 
 # 5. Otra información relevante:
 ## Pautas de desarrollo

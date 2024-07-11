@@ -524,21 +524,26 @@ def gestionar_habitaciones():
 
 def main():
     if mostrar_terminos_y_condiciones():
-        while True:
-            opcion = mostrar_menu_principal()
-            if opcion == '1':
-                gestionar_usuarios()
-            elif opcion == '2':
-                gestionar_reservas()
-            elif opcion == '3':
-                gestionar_habitaciones()
-            elif opcion == '4':
-                gestionar_pasajeros()
-            elif opcion == '5':
-                print("Gracias por usar el sistema. ¡Hasta luego!")
-                break
-            else:
-                print("Opción no válida. Por favor, intente de nuevo.")
+        try:
+        
+            while True:
+                opcion = mostrar_menu_principal()
+                if opcion == '1':
+                    gestionar_usuarios()
+                elif opcion == '2':
+                    gestionar_reservas()
+                elif opcion == '3':
+                    gestionar_habitaciones()
+                elif opcion == '4':
+                    gestionar_pasajeros()
+                elif opcion == '5':
+                    print("Gracias por usar el sistema. ¡Hasta luego!")
+                    break
+                else:
+                    print("Opción no válida. Por favor, intente de nuevo.")
+        except Exception as e:
+            print("Ocuriio un Error", e)
+            input("Presiona Enter para continuar...")
     else:
         print("No se puede acceder al sistema sin aceptar los Términos y Condiciones.")
 
