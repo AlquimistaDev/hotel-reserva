@@ -11,7 +11,7 @@ class PasajeroDAOImpl(PasajeroDAO):
         self.queries = self.load_queries()
 
     def load_queries(self):
-        with open('queries.json', 'r') as file:
+        with open('C:\\cursos\\reserva_hotel\\queries.json', 'r') as file:
             return json.load(file)
 
     def get_all_pasajeros(self) -> List[PasajeroDTO]:
@@ -63,24 +63,22 @@ class PasajeroDAOImpl(PasajeroDAO):
     def crear_pasajero(self, pasajero: PasajeroDTO) -> bool:
         connection = self.db.get_connection()
         try:
-            # Primero, verificamos si la región, provincia y comuna existen
+            # Verificar que los campos obligatorios no estén vacíos
+            if not pasajero.NOMBRE_PASAJERO or not pasajero.APELLIDO_PASAJERO or not pasajero.USER_EMAIL_PASAJERO or not pasajero.DIRE_PASAJERO:
+                raise ValueError("Todos los campos obligatorios deben ser llenados.")
+
+            # Verificar que los valores de las claves foráneas sean válidos
             with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM tbl_region WHERE ID_REGION = %s", (pasajero.ID_REGION,))
+                cursor.execute("SELECT COUNT(*) FROM TBL_REGION WHERE ID_REGION = %s", (pasajero.ID_REGION,))
                 if cursor.fetchone()[0] == 0:
-                    print(f"Error: La región con ID {pasajero.ID_REGION} no existe.")
-                    return False
-
-                cursor.execute("SELECT COUNT(*) FROM tbl_provincias WHERE ID_PROVINCIA = %s", (pasajero.ID_PROVINCIA,))
+                    raise ValueError(f"La región con ID {pasajero.ID_REGION} no existe.")
+                cursor.execute("SELECT COUNT(*) FROM TBL_PROVINCIAS WHERE ID_PROVINCIA = %s", (pasajero.ID_PROVINCIA,))
                 if cursor.fetchone()[0] == 0:
-                    print(f"Error: La provincia con ID {pasajero.ID_PROVINCIA} no existe.")
-                    return False
-
-                cursor.execute("SELECT COUNT(*) FROM tbl_comunas WHERE ID_COMUNA = %s", (pasajero.ID_COMUNA,))
+                    raise ValueError(f"La provincia con ID {pasajero.ID_PROVINCIA} no existe.")
+                cursor.execute("SELECT COUNT(*) FROM TBL_COMUNAS WHERE ID_COMUNA = %s", (pasajero.ID_COMUNA,))
                 if cursor.fetchone()[0] == 0:
-                    print(f"Error: La comuna con ID {pasajero.ID_COMUNA} no existe.")
-                    return False
+                    raise ValueError(f"La comuna con ID {pasajero.ID_COMUNA} no existe.")
 
-            # Si todas las verificaciones pasan, procedemos a insertar el pasajero
             with connection.cursor() as cursor:
                 sql = self.queries['crear_pasajero']
                 cursor.execute(sql, (
@@ -95,9 +93,6 @@ class PasajeroDAOImpl(PasajeroDAO):
                 ))
             connection.commit()
             return True
-        except mysql.connector.Error as e:
-            if e.errno == 1452:  # Error de clave foránea
-                print("Error: Los ID de región, provincia o comuna no son válidos.")
         except Exception as e:
             print(f"Error al crear pasajero: {e}")
             connection.rollback()
